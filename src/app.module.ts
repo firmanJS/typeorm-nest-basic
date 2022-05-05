@@ -9,7 +9,7 @@ import { AppConfigService } from './config/app/app.service';
 import { PostgresConfigService } from './config/database/postgres/pg.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { UserModule } from './modules/users/users.module';
+import { RegisterModule } from './modules';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { UserModule } from './modules/users/users.module';
     AppConfigModule,
     PostgresConfigModule,
     TypeOrmProviderModule,
-    UserModule,
+    ...RegisterModule,
   ],
   providers: [
     ConfigService,

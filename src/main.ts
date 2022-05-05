@@ -2,7 +2,6 @@ import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
-// import { TransformInterceptor } from './utils/interceptor';
 import { AppConfigService } from './config/app/app.service';
 
 async function bootstrap() {
@@ -13,8 +12,6 @@ async function bootstrap() {
     type: VersioningType.URI,
   });
   app.useGlobalPipes(new ValidationPipe());
-  // app.useGlobalInterceptors(new TransformInterceptor());
-
   const appConfig: AppConfigService = app.get(AppConfigService);
   await app.listen(appConfig.port);
 }
